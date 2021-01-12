@@ -6,7 +6,7 @@ router.get('/', function(req, res){
     });
 });
 
-let rootController = require('./rootController')
+let rootController = require('./rootcontroller')
 
 router.route('/roots')
     .get(rootController.index)
