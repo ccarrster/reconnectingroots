@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+            .logo{
+                max-width: 200px;
+                max-height: 200px;
+            }
+            .resource{
+                border-radius: 5px;
+                border: 2px solid black;
+                padding: 10px;
+                margin: 5px;
+            }
+            .resource .name{
+                font-size: 32px;
+            }
+            .resource div{
+                padding: 5px;
+            }
+            .resource .heading{
+                font-weight: bold;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="resource">
+            <div class="heading">Search</div>
+            <input type="text"><button>Search</button>
+        </div>
+        <div class="resource">
+            <div class="heading">Suggest a Resource</div>
+            <form>
+            <div class="heading">Name</div>
+            <div class="name"><input id="name" type="text"></div>
+            <div class="heading">Logo</div>
+            <div><input type="file"></div>
+            <div class="heading">Address</div>
+            <div><input id="location" type="text"></div>
+            <div class="heading">Description</div>
+            <div><textarea id="description"></textarea></div>
+            <div class="heading">Website</div>
+            <div><input id="website" type="text"></div>
+            <div class="heading">Phone</div>
+            <div><input id="phone" type="text"></div>
+            <div class="heading">Email</div>
+            <div><input id="email" type="text"></div>
+            <input type="submit">
+            </form>
+        </div>
+        
+        <div id="resources">
+
+        </div>
+        <script src="jquery-3.5.1.min.js"></script>
+        <script>
+            const resources = [];
+            resources.push({
+                id: 1,
+                name: "White Owl Native Ancestry Association",
+                location: "65 Hanson Ave. Kitchener, ON N2C 2H6",
+                description: "Creative Native: Thursday evenings, Tea and Teachings: second Monday of the month, Individual, couple and family counseling, Land based teachings and programs, Outreach programs to connect families to services, Healers, Email Newsletter",
+                website: "https://wonaa.ca",
+                phone: "519-772-4399 x2798",
+                email: "Info@wonaa.ca",
+                social: ["https://www.facebook.com/White-Owl-Native-Ancestry-Association-695074410526702/", "https://www.instagram.com/wonaa1975"],
+            });
+
+            resources.push({
+                id: 2,
+                name: "Healing of Seven Generations",
+                location: "300 Fredrick St. Kitchener, ON N2H 2N5",
+                description: "The Healing of the Seven Generations assists First Peoples residing in the Region of Waterloo and surrounding areas. We work with individuals and families who are suffering the inter-generational impacts of the residential school system. This includes growing up in dysfunctional families; emotional, physical, sexual, and spiritual abuses; poor self-esteem or poor self-image as a First Peoples person; loss of culture; lack of awareness of cultural identity, teachings, values, and traditions; poverty, and addictions. We welcome First Peoples from all ages, genders, and cultural groups, including status and non-status First Nations, Métis, and Inuit individuals and families.",
+                website: "https://healingofthesevengenerations.ca",
+                phone: "519-570-9118",
+                email: "assist.h7gen@gmail.com",
+                social: ["https://www.facebook.com/HealingoftheSevenGenerations/", "https://twitter.com/healingofthe7g"],
+            });
+
+            resources.push({
+                id: 3,
+                name: "K-W Urban Native Wigwam Project",
+                location: "51 Church Street, Upper Floor Kitchener, Ontario N2G 2S1",
+                description: "The KWUNWP is a non-profit organization that has served the Native population of the Waterloo Region since 1987. It provides safe, secure, and affordable rent geared-to-income housing for Native people and their families that are in a low or moderate income situation.",
+                website: "https://kwunwp.weebly.com",
+                phone: "519-743-5868",
+                email: "kwunwphousing@gmail.com",
+                social: ["https://www.facebook.com/KWUNWP"],
+            });
+
+            resources.push({
+                id: 4,
+                name: "NPAAMB Indigenous Youth Employment and Training",
+                location: "50 Generations Drive, 2nd Floor 4th Line, Six Nations Corner, ON N0A 1M0",
+                description: "NPAAMB provides skills development and training opportunities for urban Aboriginal youth ages 15-30 in Southern Ontario.",
+                website: "https://npaamb.com/",
+                phone: "519-751-8333",
+                email: "communications@npaamb.com",
+                social: ["https://www.facebook.com/npaamb", "https://www.instagram.com/npaamb/", "https://twitter.com/npaamb_on"],
+            });
+
+            resources.push({
+                id: 5,
+                name: "Ahwenehaode – Indigenous Justice Program",
+                location: "450 Frederick Street, Unit 101 Kitchener, ON N2H 2P5",
+                description: "Improve access to justice for First Nation, Metis and Inuit people by collaborating with Indigenous social agencies and networks to build relationships and trust Provide culturally respectful and appropriate clinic law services and an accessible means of support, intervention and assistance. Foster and improve coordination and integration with other legal aid services and across all elements of the justice sector. Contact: Lu Roberts.",
+                website: "http://wrcls.ca/ahwenehaode-indigenous-justice/",
+                phone: "519-743-0254",
+                email: "robertsl@lao.on.ca",
+                social: ["https://www.facebook.com/Ahwenehaode/", "https://twitter.com/ahwenehaode"],
+            });
+
+            resources.push({
+                id: 6,
+                name: "Soutwest Ontario Aboriginal Health Access Centre",
+                location: "425-427 William Street London, Ontario N6B 3E1",
+                description: "Aboriginal Health Access Centres (AHACs) are innovative, Aboriginal specific, Indigenous informed health care agencies. They provide a combination of health and social services to First Nations, Métis and Inuit communities.",
+                website: "https://soahac.on.ca/",
+                phone: "1-877-454-0753",
+                email: "info@soahac.on.ca",
+                social: ["https://www.facebook.com/soahac"],
+            });
+
+            resources.push({
+                id: 7,
+                name: "Anishnawbe Health Toronto",
+                location: "225 Queen St E, Toronto, ON",
+                description: "Our mission is to improve the health and well being of Aboriginal People in spirit, mind, emotion and body by providing Traditional Healing within a multi-disciplinary health care model.",
+                website: "https://www.aht.ca/",
+                phone: "416-360-0486",
+                email: "info@aht.ca",
+                social: ["https://www.facebook.com/anishnawbe/"],
+            });
+
+            resources.push({
+                id: 8,
+                name: "Sixties Scoop Network",
+                location: "",
+                description: "The concept for the project began with the simple idea of using an online GIS mapping platform to visualize the displacements through an interactive map to show Canadians and the world what the 60’s Scoop looks like for survivors who have been displaced from their traditional homelands and territories.",
+                website: "https://sixtiesscoopnetwork.org/",
+                phone: "",
+                email: "sixtiesscoopmap@gmail.com",
+                social: ["https://twitter.com/SixtiesScoopNet", "https://www.facebook.com/groups/60sscoopmap/", "https://www.instagram.com/60sscoopnetwork/"],
+            });
+
+            resources.push({
+                id: 9,
+                name: "Anishnabeg Outreach Employment and Training",
+                location: "151 Fredrick St #501 Kitchener, ON N2H 2M2",
+                description: "Build processes and tools that will position current and future First Nations Metis and Inuit generations as prosperous leaders and strategic partners in Canada’s future.",
+                website: "https://www.aocan.org/",
+                phone: "519-763-5292",
+                email: "info@aocan.org",
+                social: ["https://www.facebook.com/anishnabegoutreach", "https://twitter.com/anishnabeg", "https://www.instagram.com/anishnabegoutreach/", "https://www.youtube.com/channel/UC52InjUpYovUQzSVHszaE9w"],
+            });
+
+            resources.push({
+                id: 10,
+                name: "Ganohkwasra",
+                location: "1781 Chiefswood Rd., Ohsweken, Ontario N0A 1M0",
+                description: "Community Counselling and Residential Services provide holistic programs based on Ǫgwehǫ:weh teachings that integrate the mind, body and spirit. The teachings combined with mainstream counselling techniques provide a basis for helping one to accept responsibility for their total being. Abusive behaviours and their generational sources are explored in a caring, non-judgmental way. The commitment to this holistic healing process may be long term, based on the needs of the individual.",
+                website: "https://ganohkwasra.com/",
+                phone: "519-445-4324",
+                email: "ganohkwasra@ganohkwasra.com",
+                social: ["https://www.facebook.com/GanohkwasraFamilyAssaultSupportServices/", "https://twitter.com/GFASS_", "https://www.instagram.com/ganohkwasra/", "https://www.youtube.com/channel/UCXzlkKG2mSQDETygHRPHBOg"],
+            });
+
+            resources.push({
+                id: 11,
+                name: "Metis Nation of Ontario",
+                location: "Suite 1100, 11th Floor 66 Slater Street Ottawa, ON, K1P 5H1",
+                description: "Creating a Métis-specific governance structure for the implementation of the nation’s inherent right to self-government in the province; Establishing a credible and recognized identification system for Métis people within the province; Focusing on ‘nation building’ through working together as a collective in order to support Métis citizens and communities; Pursuing a rights-based agenda and proudly asserting the Métis existence as a distinct Aboriginal people within Ontario; Protecting and preserving the distinct culture and heritage of the Métis Nation in the province; and, Improving the social and economic well-being of Métis children, families and communities throughout the province.",
+                website: "https://www.metisnation.org/",
+                phone: "613-798-1488",
+                email: "info@metisnation.org",
+                social: ["https://twitter.com/metisnationon", "https://www.facebook.com/ONMetis/", "https://www.instagram.com/metisnationon/", "https://www.linkedin.com/company/m%C3%A9tis-nation-of-ontario/", "https://www.youtube.com/channel/UCYt1gnqk88jHpRWiOXe0d_A"],
+            });
+
+            resources.push({
+                id: 12,
+                name: "Aboriginal Shelters of Ontario",
+                location: "1781 Chiefswood Rd. Ohsweken, ON, Six Nations of the Grand River",
+                description: "The Aboriginal Shelters of Ontario Board of Directors will collaborate and support Organizations to work towards addressing and ending family violence by providing quality service incorporating traditional beliefs. Contact: Jeanine George",
+                website: "http://aboriginalshelters.ca/",
+                phone: "(519) 652-0888 ",
+                email: "jeanine.george@asoo.ca",
+                social: [],
+            });
+
+            resources.push({
+                id: 13,
+                name: "Native Women's Centre",
+                location: "1900 King Street East P.O. Box 69036 Hamilton, ON L8K 1W0",
+                description: "The Native Women's Centre provides safe, emergency shelter for all women regardless of age, ancestry, culture, place of origin or sexual orientation with or without children who are experiencing crisis in their lives due to family violence, homelessness, or conflict with the law .",
+                website: "http://nativewomenscentre.com/",
+                phone: "1-888-308-6559",
+                email: "",
+                social: ["https://www.facebook.com/nativewomenscentre", "https://www.youtube.com/channel/UCM_LwSDBlVW_V4WiNCWka9w"],
+            });
+
+            resources.push({
+                id: 14,
+                name: "Six Nations Health Services",
+                location: "1745 Chiefswood Rd Ohsweken, ON N0A 1M0",
+                description: "Our mission is to create a safe environment, toguide, suport and care for our community members on their wellness journey.",
+                website: "http://www.snhs.ca/",
+                phone: "519-445-2418",
+                email: "",
+                social: ["https://www.linkedin.com/company/six-nations-health-services/"],
+            });
+
+            resources.push({
+                id: 15,
+                name: "Tungasuvvingat Inuit",
+                location: "1071 Richmond Road, Ottawa, ON K2B 6R2",
+                description: "Tungasuvvingat Inuit is an Inuit-specific urban services provider that offers community supports for Inuit of all ages.  Finding your way through the urban systems and getting the support you need is what TI does.  We’re there for you as you build your life in the south and work to keep you connected to your culture in the north.",
+                website: "https://tiontario.ca/",
+                phone: "613-565-5885",
+                email: "info@tiontario.ca",
+                social: ["https://twitter.com/tiontario", "https://www.facebook.com/TIottawa/", "https://www.youtube.com/channel/UC8Xnwdor1xbLYWiSh2ClO9A", "https://www.linkedin.com/company/tungasuvvingat-inuit-ti/"],
+            });
+
+            resources.push({
+                id: 16,
+                name: "Mino Ode Kwewak N'Gamowak",
+                location: "",
+                description: "We are Indigenous and non-Indigenous women following the drum circle teachings of Community Elder Jean Becker, who began this group in 2003.",
+                website: "https://minoodekwewak.wixsite.com/goodheartedwomen",
+                phone: "",
+                email: "",
+                social: [],
+            });
+
+            resources.push({
+                id: 17,
+                name: "Grand River Metis Council",
+                location: "65 Hanson Road Kitchener, Ontario N2C 2H6",
+                description: "To promote and preserve the Métis way of life. To look to our elders, to attain and maintain our  Métis traditions, culture, spirituality and the respect of Mother Earth. To ensure future generations carry on this vision, we are committed to educating our Youth.",
+                website: "https://www.grandrivermetiscouncil.com/",
+                phone: "519-576-0540 Ext. 3716",
+                email: "president@grandrivermetiscouncil.com",
+                social: ["https://www.facebook.com/groups/grandrivermetiscouncil/", "https://twitter.com/GrandRiverMetis", "https://www.instagram.com/explore/tags/grandrivermetiscouncil/"],
+            });
+
+            resources.push({
+                id: 18,
+                name: "Eagle's Nest Foster Care",
+                location: "22360 Corn Plant Road RR3 Bothwell, ON N0P 1C0",
+                description: "Eagle’s Nest supports both Indigenous and non-Indigenous children and youth. These are children and youth who may live with complex mental health needs including ODD, ADHD and ARND, or who live with pervasive developmental disorders including autism and PD-NOS.",
+                website: "http://eaglesnestfc.ca/",
+                phone: "519-439-3000",
+                email: "management@eaglesnestfc.ca",
+                social: ["https://twitter.com/eagles_nestfc", "https://www.facebook.com/EaglesNestAPlacetoSoar/", "https://www.instagram.com/eagles_nest_fc"],
+            });
+
+            resources.push({
+                id: 19,
+                name: "Pacific Association of First Nations Women",
+                location: "2017 Dundas Street, Vancouver, BC V5L 1J5",
+                description: "To bring our vision into reality, we advocate for systems change and provide Indigenous, culturally safe learning and offer holistic supports to uplift Indigenous women and strengthen families.",
+                website: "https://pafnw.wordpress.com/",
+                phone: "604-872-1849",
+                email: "info@pafnw.ca",
+                social: ["https://www.facebook.com/PAFNW/"],
+            });
+
+            resources.push({
+                id: 20,
+                name: "Aboriginal Legal Services",
+                location: "211 Yonge Street, Suite 500 Toronto ON M5B 1M4",
+                description: "ALS was formed following a needs assessment by the Native Canadian Centre of Toronto in the mid-1980s. The Centre had been operating legal-related programs for Aboriginal people in Toronto but concluded an agency dedicated to this issue was needed.",
+                website: "http://www.aboriginallegal.ca/",
+                phone: "416-408-3967",
+                email: "info@aboriginallegal.ca",
+                social: ["https://www.facebook.com/AboriginalLegal"],
+            });
+
+            
+            
+            
+
+                //Multiple Locations... multiple entries?
+                //Accents in words
+                //Filters/Search by location
+                //Add api to pull links
+                //Quick suggestion
+                //Admin editors to approve
+                //scrapey
+                //http://www.mvaec.ca/directory/directory-list
+                //https://indigenousto.ca/
+            /*
+
+            resources.push({
+                id: 0,
+                name: "",
+                location: "",
+                description: "",
+                website: "",
+                phone: "",
+                email: "",
+                social: [],
+            });
+
+            */
+
+            for(let resource of resources){
+                let socialLinks = "";
+                for(let media of resource.social){
+                    socialLinks += `<li><a target="_blank" href="${media}">${media}</a></li>`;
+                }
+                $("#resources").append(`
+                <div class="resource" id="resource${resource.id}">
+                    <div class="name">${resource.name}</div>
+                    <div><a target="_blank" href="${resource.website}"><img class="logo" src="${resource.id}.png" alt="Logo"></a></div>
+                    <div class="heading">Address</div>
+                    <div><a target="_blank" href="https://maps.google.com/?q=${resource.location}">${resource.location}</a></div>
+                    <div class="heading">Description</div>
+                    <div>${resource.description}</div>
+                    <div class="heading">Website</div>
+                    <div><a target="_blank" href="${resource.website}">${resource.website}</a></div>
+                    <div class="heading">Phone</div>
+                    <div>${resource.phone}</div>
+                    <div class="heading">Email</div>
+                    <div>${resource.email}</div>
+                    <div class="heading">Social Media</div>
+                    <div>
+                        <ul>
+                            ${socialLinks}
+                        </ul>
+                    </div>
+                </div>
+                `);
+            }
+        </script>
+    </body>
+</html>
